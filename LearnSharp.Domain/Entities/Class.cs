@@ -8,6 +8,9 @@
         public string LinkVideo { get; set; }
         public int Duration { get; set; }
 
+        public Guid IdModule { get; set; }
+
+
         public Module Module { get; set; }
         public ICollection<UserClassCompleted> userClassCompleteds { get; set; }
     }

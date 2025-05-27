@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LearnSharp.Infra\LearnSharp.Infra.csproj" />
+    <ProjectReference Include="..\LearnSharp.Application\LearnSharp.Application.csproj" />
+    <ProjectReference Include="..\LearnSharp.Domain\LearnSharp.Domain.csproj" />
+    <ProjectReference Include="..\LearnSharp.Infra\LearnSharp.Infra.Sql.csproj" />
   </ItemGroup>
 
   <ItemGroup>

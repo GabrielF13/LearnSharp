@@ -1,10 +1,12 @@
-﻿namespace LearnSharp.Domain.Entities
+﻿using LearnSharp.Domain.Entities.Enum;
+
+namespace LearnSharp.Domain.Entities
 {
     public class PaymentSubscription
     {
         public Guid Id { get; set; }
         public DateTime DateProcess { get; set; }
-        public PaymentSubscription Status { get; set; }
+        public PaymentStatus Status { get; set; }
         public string Message { get; set; }
         public decimal Value { get; set; }
         public Guid IdUserSubscription { get; set; }

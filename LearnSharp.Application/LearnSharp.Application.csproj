@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LearnSharp.Domain\LearnSharp.Domain.csproj" />
+    <ProjectReference Include="..\LearnSharp.Infra\LearnSharp.Infra.Sql.csproj" />
+  </ItemGroup>
+
 </Project>
