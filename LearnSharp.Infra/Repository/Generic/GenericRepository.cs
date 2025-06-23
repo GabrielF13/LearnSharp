@@ -32,14 +32,12 @@ namespace LearnSharp.Infra.Sql.Repository.Generic
         public virtual async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
             return entity;
         }
 
         public virtual async Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
         }
 
         public virtual async Task DeleteAsync(Guid id)
@@ -48,13 +46,17 @@ namespace LearnSharp.Infra.Sql.Repository.Generic
             if (entity != null)
             {
                 _dbSet.Remove(entity);
-                await _context.SaveChangesAsync();
             }
         }
 
         public virtual async Task<bool> ExistsAsync(Guid id)
         {
             return await _dbSet.FindAsync(id) != null;
+        }
+
+        public async Task SaveChangesAsync(Guid id)
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

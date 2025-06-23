@@ -16,6 +16,8 @@ namespace LearnSharp.Infra.Sql.Repository.Generic
 
         Task DeleteAsync(Guid id);
 
+        Task SaveChangesAsync(Guid id);
+
         Task<bool> ExistsAsync(Guid id);
     }
 }
