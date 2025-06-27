@@ -16,7 +16,7 @@ namespace LearnSharp.Application.Services
 
         public async Task<IEnumerable<ClassDto>> Get(CancellationToken cancellationToken)
         {
-            var classes = await _unitOfWork.Classes.GetAllAsync(cancellationToken);
+            var classes = await _unitOfWork.Classes.GetAllAsync();
 
             return classes.Select(c => new ClassDto
             {
@@ -30,7 +30,7 @@ namespace LearnSharp.Application.Services
 
         public async Task<ClassDto> GetById(Guid idModule, CancellationToken cancellationToken)
         {
-            var classEntity = await _unitOfWork.Classes.GetByIdAsync(idModule, cancellationToken);
+            var classEntity = await _unitOfWork.Classes.GetByIdAsync(idModule);
 
             return new ClassDto
             {
@@ -45,7 +45,7 @@ namespace LearnSharp.Application.Services
 
         public async Task<bool> Create(ClassDto inputClass, CancellationToken cancellationToken)
         {
-            var classInput =  new Class
+            var classInput = new Class
             {
                 Id = inputClass.Id,
                 Name = inputClass.Name,
@@ -66,14 +66,49 @@ namespace LearnSharp.Application.Services
             return true;
         }
 
-        public Task<bool> Update(ClassDto inputClass, CancellationToken cancellationToken)
+        public async Task<bool> Update(ClassDto inputClass, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var classInput = new Class
+                {
+                    Id = inputClass.Id,
+                    Name = inputClass.Name,
+                    Description = inputClass.Description,
+                    LinkVideo = inputClass.LinkVideo,
+                    Duration = inputClass.Duration,
+                    IdModule = inputClass.IdModule
+                };
+
+                await _unitOfWork.Classes.UpdateAsync(classInput);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
         }
 
-        public Task<bool> Delete(Guid idModule, CancellationToken cancellationToken)
+        public async Task<bool> Delete(Guid idModule, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var classEntity = await _unitOfWork.Classes.GetByIdAsync(idModule);
+
+            if (classEntity == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                await _unitOfWork.Classes.DeleteAsync(idModule);
+                await _unitOfWork.CompleteAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

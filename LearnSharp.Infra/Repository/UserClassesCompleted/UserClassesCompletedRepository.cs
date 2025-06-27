@@ -15,11 +15,11 @@ namespace LearnSharp.Infra.Sql.Repository.UserClassesCompleted
 
         public async Task CompleteClassAsync(Guid userId, Guid classId, int note)
         {
-            var jaConcluida = await UserCompletedClassAsync(userId, classId);
+            var completed = await UserCompletedClassAsync(userId, classId);
 
-            if (!jaConcluida)
+            if (!completed)
             {
-                var conclusao = new UserClassCompleted
+                var conclusion = new UserClassCompleted
                 {
                     Id = Guid.NewGuid(),
                     IdUser = userId,
@@ -28,7 +28,7 @@ namespace LearnSharp.Infra.Sql.Repository.UserClassesCompleted
                     Note = note
                 };
 
-                await AddAsync(conclusao);
+                await AddAsync(conclusion);
             }
         }
 

@@ -54,7 +54,7 @@ namespace LearnSharp.Infra.Sql.Repository.Generic
             return await _dbSet.FindAsync(id) != null;
         }
 
-        public async Task SaveChangesAsync(Guid id)
+        public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
         }

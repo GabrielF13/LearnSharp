@@ -20,8 +20,4 @@
     <ProjectReference Include="..\LearnSharp.Infra\LearnSharp.Infra.Sql.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

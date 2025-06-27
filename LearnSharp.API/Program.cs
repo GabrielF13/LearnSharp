@@ -1,3 +1,4 @@
+using LearnSharp.Application.DependencyInjection;
 using LearnSharp.Infra.Sql.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 DbContextDependencyInjection.ConfigureServices(builder.Services, builder.Configuration);
+
+ServicesDependencyInjection.ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
