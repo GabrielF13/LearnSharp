@@ -10,7 +10,6 @@
 
         public Guid IdModule { get; set; }
 
-
         public Module Module { get; set; }
         public ICollection<UserClassCompleted> userClassCompleteds { get; set; }
     }

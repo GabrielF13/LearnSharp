@@ -1,20 +1,7 @@
 ﻿using LearnSharp.Application.Services;
 using LearnSharp.Application.Services.Interfaces;
-using LearnSharp.Infra.Sql.Repository.Classes;
-using LearnSharp.Infra.Sql.Repository.Courses;
-using LearnSharp.Infra.Sql.Repository.Generic;
-using LearnSharp.Infra.Sql.Repository.Modules;
-using LearnSharp.Infra.Sql.Repository.PaymentsSubscriptions;
-using LearnSharp.Infra.Sql.Repository.Subscriptions;
-using LearnSharp.Infra.Sql.Repository.Users;
-using LearnSharp.Infra.Sql.Repository.UserSubscriptions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnSharp.Application.DependencyInjection
 {
@@ -34,7 +21,6 @@ namespace LearnSharp.Application.DependencyInjection
             services.AddScoped<IModuleService, ModuleService>();
             services.AddScoped<IUserClassCompletedService, UserClassCompletedService>();
             services.AddScoped<IUserService, UserService>();
-
 
             return services;
         }

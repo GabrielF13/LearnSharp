@@ -1,6 +1,4 @@
-﻿using LearnSharp.Domain.Entities;
-
-namespace LearnSharp.Application.Dtos
+﻿namespace LearnSharp.Application.Dtos
 {
     public class CourseDto
     {
@@ -10,6 +8,6 @@ namespace LearnSharp.Application.Dtos
         public string Cover { get; set; }
         public DateTime DateCreated { get; set; }
         public ICollection<ModuleDto> Modules { get; set; }
-        public ICollection<SubscriptionDto> Subscriptions { get; set; } 
+        public ICollection<SubscriptionDto> Subscriptions { get; set; }
     }
 }

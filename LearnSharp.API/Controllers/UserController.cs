@@ -1,7 +1,5 @@
 ﻿using LearnSharp.Application.Dtos;
 using LearnSharp.Application.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LearnSharp.API.Controllers;
@@ -28,17 +26,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            if (id == Guid.Empty)
-            {
-                return BadRequest("ID não pode ser vazio.");
-            }
-
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
-
-            if (user == null)
-            {
-                return NotFound($"Usuário com ID {id} não foi encontrado.");
-            }
 
             return Ok(user);
         }
@@ -59,12 +47,6 @@ public class UserController : ControllerBase
     {
         try
         {
-            // Validação do modelo
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             if (createUserDto == null)
             {
                 return BadRequest("Dados do usuário são obrigatórios.");

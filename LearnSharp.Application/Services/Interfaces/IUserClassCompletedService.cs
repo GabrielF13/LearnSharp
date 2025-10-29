@@ -1,5 +1,4 @@
 ﻿using LearnSharp.Application.Dtos;
-using LearnSharp.Domain.Entities;
 
 namespace LearnSharp.Application.Services.Interfaces
 {
